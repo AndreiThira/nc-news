@@ -23,15 +23,17 @@ const ArticlesPage = ({user, setUser}) =>{
     <>
     <Header user={user} setUser={setUser}/>
 
-    {isError && <p>Something went wrong</p>}
+    {isError ? <p>Something went wrong</p>: <p>Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
-        <section>
-            {articles.map((article)=>{   
+
+        <ul>
+            <li> {articles.map((article)=>{   
                 return (
                  <ArticleCard key={article.article_id} article={article}/>
                 )
-            })}
-          </section>
+            })}</li>
+           
+        </ul>
     )}
     </>
     )
