@@ -10,7 +10,7 @@ const ArticlesPage = ({user, setUser}) =>{
 
     useEffect(()=>{
         setIsLoading(true)
-        getAllArticles().then((articles)=>{
+        getAllArticles().then(({articles})=>{
             setArticles(articles)
             setIsLoading(false)
         }) .catch((error) => {

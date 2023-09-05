@@ -4,6 +4,7 @@ import './App.css'
 import ArticlesPage from './Components/ArticlesPage.jsx'
 import { useState } from 'react'
 import LoginPage from './Components/LoginPage.jsx'
+import SingleArticlePage from './Components/SingleArticlePage'
 
 
 function App() {
@@ -14,6 +15,7 @@ const [user, setUser] = useState("")
     <Routes>
       <Route path='/' element={<LoginPage user={user} setUser={setUser}/>}/>
       <Route path="/articles" element={<ArticlesPage user={user} setUser={setUser}/>}/>
+      <Route path="/articles/:articleId" element={<SingleArticlePage />} />
     </Routes>
     </>
   )

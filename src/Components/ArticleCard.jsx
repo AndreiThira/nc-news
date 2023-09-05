@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ArticleCard = ({article}) => {
 
     return (
@@ -10,7 +12,9 @@ const ArticleCard = ({article}) => {
               <li className="card-item">Votes: {article.votes}</li>
               <li className="card-item">Comments: {article.comment_count}</li>
             </ul>
-            <a href="#" className="btn btn-primary">Read More</a>
+            <Link to={`/articles/${article.article_id}`} className="btn btn-primary">
+          Read More
+        </Link>
           </figcaption>
         </figure>
       );
