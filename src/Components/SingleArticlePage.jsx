@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom"
-import getAllArticles from "../utils"
+import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Header from "./Header"
 import SingleArticleCard from "./SingleArticleCard"
+import CommentSection from "./CommentSection"
+import getArticleByID from "../getArticleByID"
 
 
 
@@ -15,7 +16,7 @@ const SingleArticlePage = () =>{
 
     useEffect(()=>{
         setIsLoading(true)
-        getAllArticles(articleId).then(({article})=>{
+        getArticleByID(articleId).then(({article})=>{
             const article0 = article[0]
             setArticle(article0)
             setIsLoading(false)
@@ -28,6 +29,9 @@ const SingleArticlePage = () =>{
     return (
         <>
           <Header />
+          <Link to={`/articles/`} className="btn btn-primary">
+          Back
+        </Link>
           <div className="article-card">
             {isError ? <p>Something went wrong</p> : ""}
             {isLoading && !isError ? (
@@ -36,6 +40,7 @@ const SingleArticlePage = () =>{
               <SingleArticleCard article={article} />
             )}
           </div>
+          <CommentSection articleId={articleId}/>
         </>
       )
     }

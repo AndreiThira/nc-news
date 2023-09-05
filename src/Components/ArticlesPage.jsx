@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import Header from "./Header"
-import getAllArticles from "../utils"
+
 import ArticleCard from "./ArticleCard"
+import getAllArticles from "../getAllArticles"
 
 const ArticlesPage = ({user, setUser}) =>{
     const [articles, setArticles] = useState([])
@@ -22,6 +23,7 @@ const ArticlesPage = ({user, setUser}) =>{
     return (
     <>
     <Header user={user} setUser={setUser}/>
+    
 
     {isError ? <p>Something went wrong</p>: <p>Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
