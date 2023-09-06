@@ -2,7 +2,7 @@ import Header from "./Header";
 import { Link } from "react-router-dom";
 
 const LoginPage = ({user, setUser}) => {
-
+  
     const handleSubmit= (event) =>{
         event.preventDefault()
         setUser(username)   

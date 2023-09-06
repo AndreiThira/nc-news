@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "./Header"
 
 import ArticleCard from "./ArticleCard"
-import getAllArticles from "../getAllArticles"
+import getAllArticles from "./utils/getAllArticles"
 
 const ArticlesPage = ({user, setUser}) =>{
     const [articles, setArticles] = useState([])

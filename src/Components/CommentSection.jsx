@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import CommentCard from "./CommentCard"
-import getComments from "../getComments"
+import getComments from "./utils/getComments"
 
 const CommentSection = ({articleId})=>{
     const [comments, setComments] = useState([])
@@ -22,6 +22,7 @@ const CommentSection = ({articleId})=>{
     return(
     <>
     <p>Comments:</p>
+    {comments.length === 0 ? <p>No comments yet</p> : 
     <ul>
             <li> {comments.map((comment)=>{   
                 return (
@@ -30,6 +31,7 @@ const CommentSection = ({articleId})=>{
             })}</li>
            
         </ul>
+}
     </> 
     )
 }

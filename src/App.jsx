@@ -15,7 +15,7 @@ const [user, setUser] = useState("")
     <Routes>
       <Route path='/' element={<LoginPage user={user} setUser={setUser}/>}/>
       <Route path="/articles" element={<ArticlesPage user={user} setUser={setUser}/>}/>
-      <Route path="/articles/:articleId" element={<SingleArticlePage />} />
+      <Route path="/articles/:articleId" element={<SingleArticlePage  user={user} setUser={setUser}/>} />
     </Routes>
     </>
   )
