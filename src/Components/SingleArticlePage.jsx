@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Header from "./Header"
 import SingleArticleCard from "./SingleArticleCard"
 import CommentSection from "./CommentSection"
-import getArticleByID from "./utils/getArticleByID"
+import getArticleByID from "../utils/getArticleByID"
 
 
 
