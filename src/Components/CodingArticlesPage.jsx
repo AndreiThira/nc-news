@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
-import Header from "./Header"
-
-import ArticleCard from "./ArticleCard"
-import getAllArticles from "../utils/getAllArticles"
 import { Link } from "react-router-dom"
+import Header from "./Header"
+import { useEffect, useState } from "react"
+import getAllArticles from "../utils/getAllArticles"
+import ArticleCard from "./ArticleCard"
 
-const ArticlesPage = ({user, setUser}) =>{
+const CodingArticlesPage = () =>{
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
@@ -13,7 +12,10 @@ const ArticlesPage = ({user, setUser}) =>{
     useEffect(()=>{
         setIsLoading(true)
         getAllArticles().then(({articles})=>{
-            setArticles(articles)
+            const codingArticles = articles.filter((article) =>
+            article.topic === "coding"
+          );
+          setArticles(codingArticles)
             setIsLoading(false)
         }) .catch((error) => {
             setIsError(true)
@@ -21,22 +23,14 @@ const ArticlesPage = ({user, setUser}) =>{
         })
     }, [])
 
-    return (
-    <>
-    <Header user={user} setUser={setUser}/>
-    <Link to={`/articles/cooking`}>
-    <a className="btn btn-primary">Cooking</a>
-    </Link>
-    <Link to={`/articles/coding`}>
-    <a className="btn btn-primary">Coding</a>
-    </Link>
-    <Link to={`/articles/football`}>
-    <a className="btn btn-primary">Football</a>
-    </Link>
 
-    
-
-    {isError ? <p>Something went wrong while fetching articles</p>: <p>Articles:</p>}
+    return(
+        <>
+        <Header/>
+        <Link to={`/articles/`} className="btn btn-primary">
+          Back
+        </Link>
+        {isError ? <p>Something went wrong while fetching articles</p>: <p>Coding Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
 
         <ul>
@@ -48,8 +42,8 @@ const ArticlesPage = ({user, setUser}) =>{
            
         </ul>
     )}
-    </>
+        </>
     )
 }
 
-export default ArticlesPage
+export default CodingArticlesPage
