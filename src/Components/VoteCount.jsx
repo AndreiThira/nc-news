@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import patchVotes from "./utils/patchVotes";
+import React, { useState } from "react"
+import patchVotes from "../utils/patchVotes";
+
 
 const VoteCount = ({ setVotes, articleID }) => {
   const [voteDirection, setVoteDirection] = useState(0)
@@ -19,11 +20,10 @@ const VoteCount = ({ setVotes, articleID }) => {
       setVoteDirection(1)
 
       patchVotes(patchVoteUp, articleID).then((data) => {
-        if (data.status !== 200) {
-          setVotes((votes) => votes - 1)
+      }).catch((err)=>{
+        setVotes((votes) => votes - 1)
           setVoteDirection(0)
-        }
-      });
+      })
     }
   };
 
@@ -38,9 +38,9 @@ const VoteCount = ({ setVotes, articleID }) => {
           setVotes((votes) => votes + 1)
           setVoteDirection(0)
         }
-      });
+      })
     }
-  };
+  }
 
   return (
     <>

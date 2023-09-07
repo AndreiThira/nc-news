@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "./Header"
 
 import ArticleCard from "./ArticleCard"
-import getAllArticles from "./utils/getAllArticles"
+import getAllArticles from "../utils/getAllArticles"
 
 const ArticlesPage = ({user, setUser}) =>{
     const [articles, setArticles] = useState([])
@@ -25,7 +25,7 @@ const ArticlesPage = ({user, setUser}) =>{
     <Header user={user} setUser={setUser}/>
     
 
-    {isError ? <p>Something went wrong</p>: <p>Articles:</p>}
+    {isError ? <p>Something went wrong while fetching articles</p>: <p>Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
 
         <ul>
