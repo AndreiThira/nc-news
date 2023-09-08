@@ -29,10 +29,12 @@ const SingleArticlePage = () =>{
     return (
         <>
           <Header />
-          <Link to={`/articles/`} className="btn btn-primary">
-          Back
-        </Link>
-          <div className="article-card">
+          <div className="back-container">
+        <Link to={`/articles`}>
+    <a className="button-32">Back</a>
+    </Link>
+        </div>
+          <div className="single-article-card-page">
             {isError ? <p>Something went wrong</p> : ""}
             {isLoading && !isError ? (
               <p>Loading...</p>

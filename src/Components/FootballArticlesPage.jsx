@@ -27,12 +27,14 @@ const FootballArticlesPage = () =>{
     return(
         <>
         <Header/>
-        <Link to={`/articles/`} className="btn btn-primary">
-          Back
-        </Link>
+        <div className="back-container">
+        <Link to={`/articles`}>
+    <a className="button-32">Back</a>
+    </Link>
+        </div>
         {isError ? <p>Something went wrong while fetching articles</p>: <p>Football Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
-
+        <div className="article-list">
         <ul>
             <li> {articles.map((article)=>{   
                 return (
@@ -41,6 +43,7 @@ const FootballArticlesPage = () =>{
             })}</li>
            
         </ul>
+        </div>
     )}
         </>
     )

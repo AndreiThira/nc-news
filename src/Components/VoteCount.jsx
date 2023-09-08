@@ -44,12 +44,14 @@ const VoteCount = ({ setVotes, articleID }) => {
 
   return (
     <>
-      <button onClick={handleVoteUp} disabled={voteDirection === 1}>
+    <div className="vote-button-container">
+      <button className="button-32" onClick={handleVoteUp} disabled={voteDirection === 1}>
         👍
       </button>
-      <button onClick={handleVoteDown} disabled={voteDirection === -1}>
+      <button className="button-32" onClick={handleVoteDown} disabled={voteDirection === -1}>
         👎
       </button>
+    </div>
     </>
   );
 };

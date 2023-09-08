@@ -28,17 +28,21 @@ const CommentForm = ({ articleId, setComments, user }) => {
 
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="comment-form">
       <label>
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           required
+          className="comment-input" 
+          placeholder="Enter your comment here..."
         />
       </label>
-      <button type="submit" disabled={isSubmitting}>
+      <div className="submit-button-comment">
+      <button className="button-32" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
-      </button>
+      </button> 
+      </div>
     </form>
   );
 };

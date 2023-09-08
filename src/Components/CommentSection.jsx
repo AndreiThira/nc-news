@@ -28,8 +28,12 @@ const CommentSection = ({ articleId }) => {
 
   return (
     <>
-      <p>Comments:</p>
-      <button onClick={toggleCommentForm}>New Comment</button>
+    <div className="comment-button-container">
+       <p>Comments:</p>
+       <div className="add-comment-button">
+      <button  className= "button-32" onClick={toggleCommentForm}>New Comment</button>
+       </div>
+    </div>
       {showCommentForm && (
         <CommentForm articleId={articleId} setComments={setComments} />
       )}
@@ -39,11 +43,14 @@ const CommentSection = ({ articleId }) => {
       ) : comments.length === 0 ? (
         <p>No comments yet</p>
       ) : (
+        <div className="comments-container">
         <ul>
           {comments.map((comment) => {
             return <CommentCard key={comment.comment_id} comment={comment} />
           })}
         </ul>
+
+        </div>
       )}
     </>
   )

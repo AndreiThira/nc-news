@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Header from "./Header"
-
 import ArticleCard from "./ArticleCard"
 import getAllArticles from "../utils/getAllArticles"
 import { Link } from "react-router-dom"
@@ -24,21 +23,23 @@ const ArticlesPage = ({user, setUser}) =>{
     return (
     <>
     <Header user={user} setUser={setUser}/>
+    <div className="category-container">
     <Link to={`/articles/cooking`}>
-    <a className="btn btn-primary">Cooking</a>
+    <a className="button-32">Cooking</a>
     </Link>
     <Link to={`/articles/coding`}>
-    <a className="btn btn-primary">Coding</a>
+    <a className="button-32">Coding</a>
     </Link>
     <Link to={`/articles/football`}>
-    <a className="btn btn-primary">Football</a>
+    <a className="button-32">Football</a>
     </Link>
+    </div>
 
     
-
-    {isError ? <p>Something went wrong while fetching articles</p>: <p>Articles:</p>}
+    {isError ? <p>Something went wrong while fetching articles</p>: <p> All Articles:</p>}
     {isLoading && !isError ? (<p>Loading...</p>): (
 
+        <div className="article-list">
         <ul>
             <li> {articles.map((article)=>{   
                 return (
@@ -47,6 +48,7 @@ const ArticlesPage = ({user, setUser}) =>{
             })}</li>
            
         </ul>
+        </div>
     )}
     </>
     )
