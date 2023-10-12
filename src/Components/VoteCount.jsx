@@ -28,19 +28,24 @@ const VoteCount = ({ setVotes, articleID }) => {
   };
 
   const handleVoteDown = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (voteDirection !== -1) {
-      setVotes((votes) => votes - 1)
-      setVoteDirection(-1)
-
-      patchVotes(patchVoteDown, articleID).then((data) => {
-        if (data.status !== 200) {
-          setVotes((votes) => votes + 1)
-          setVoteDirection(0)
-        }
-      })
+      console.log("Before vote down: voteDirection =", voteDirection);
+      setVotes((votes) => votes - 1);
+      setVoteDirection(-1);
+      console.log("After vote down: voteDirection =", voteDirection);
+  
+      patchVotes(patchVoteDown, articleID)
+        .then((data) => {
+          console.log("Vote down API response:", data);
+          if (data.status !== 200) {
+            setVotes((votes) => votes + 1);
+            setVoteDirection(0);
+            console.log("Vote down failed. Reverting voteDirection =", voteDirection);
+          }
+        });
     }
-  }
+  };
 
   return (
     <>
